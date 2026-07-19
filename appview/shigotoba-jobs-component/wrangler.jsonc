@@ -1,0 +1,40 @@
+{
+  "name": "kotodama-a80c21a0",
+  "main": "svelte/.svelte-kit/cloudflare/_worker.js",
+  "compatibility_date": "2025-03-17",
+  "compatibility_flags": [
+    "nodejs_compat",
+    "nodejs_als"
+  ],
+  "assets": {
+    "directory": "./svelte/.svelte-kit/cloudflare/client",
+    "binding": "ASSETS",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "single-page-application"
+  },
+  "vars": {
+    "APP_CAPABILITIES": "[\"domain-query\",\"data-management\"]",
+    "APP_DESCRIPTION": "Shigotoba Jobs Component — AI Agent",
+    "APP_DISPLAY_NAME": "Shigotoba Jobs Component",
+    "APP_EMBED_URL": "https://a80c21a0.etzhayyim.com/?embed=1",
+    "APP_FRAMEWORK": "sveltekit-edge-bff",
+    "AGENTGATEWAY_MCP_ROUTER_URL": "https://mcp.etzhayyim.com/xrpc/com.etzhayyim.mcp.message",
+    "APP_NANOID": "a80c21a0",
+    "APP_PERFORMER_TYPE": "service",
+    "APP_UI_TYPE": "appview"
+  },
+  "rules": [
+    {
+      "type": "CompiledWasm",
+      "globs": [
+        "**/*.wasm"
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "pattern": "a80c21a0.etzhayyim.com/*",
+      "zone_name": "etzhayyim.com"
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+{:schema "etzhayyim.migration/v1" :source {:repository "etzhayyim/root" :revision "64135b7580b7217813d65885233c4d012349c645" :path "60-apps/etzhayyim-project-shigotoba" :tree "3dd82b96678939665c5979819b1e239c04cb3be3" :tracked-files 30 :bytes 116063} :destination {:repository "etzhayyim/com-etzhayyim-app-shigotoba"} :identity {:allowed-additions ["README.edn" "migration.edn"]}}

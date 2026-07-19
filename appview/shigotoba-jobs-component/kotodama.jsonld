@@ -1,0 +1,63 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:shigotoba.etzhayyim.com",
+  "accent": "#6366f1",
+  "component": {
+    "path": "component.wasm"
+  },
+  "convoSystemPrompt": "You are shigotoba jobs component agent. Shigotoba Jobs Component — AI Agent. Respond helpfully in the users language.",
+  "duties": [
+    "勤労の義務"
+  ],
+  "governance": {
+    "raci": "responsible",
+    "classification": "internal",
+    "complianceFrameworks": [
+      "shigotoba-policy"
+    ]
+  },
+  "kpi": [
+    "credits の獲得"
+  ],
+  "name": "shigotoba-jobs-component",
+  "nanoid": "a80c21a0",
+  "performerType": "service",
+  "profile": {
+    "agentType": "autonomous",
+    "capabilities": [
+      "domain-query",
+      "data-management"
+    ],
+    "description": "Shigotoba Jobs Component — AI Agent",
+    "displayName": "Shigotoba Jobs Component",
+    "isBot": true,
+    "operator": "etzhayyim.com"
+  },
+  "project": "shigotoba",
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "kind": "public",
+        "name": "80c21a0e-feed"
+      }
+    ],
+    "joinRule": "public",
+    "name": "Shigotoba Jobs Component"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.feed.repost",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.shigotoba.jobPosting",
+        "com.etzhayyim.apps.shigotoba.companyProfile",
+        "com.etzhayyim.apps.shigotoba.collectionJob"
+      ]
+    }
+  },
+  "uiType": "appview"
+}

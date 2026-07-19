@@ -1,0 +1,28 @@
+{
+  "@context": "https://1.etzhayyim.com/project",
+  "@type": "Project",
+  "name": "etzhayyim-project-shigotoba",
+  "description": "Global job marketplace for shigotoba.etzhayyim.com (Indeed-style) on SpinApp",
+  "category": "etzhayyim-project-workers",
+  "components": {
+    "app": {
+      "appId": "shigotoba-jobs",
+      "tier": "event-driven",
+      "stack": "go",
+      "keda": false,
+      "routes": [
+        {
+          "host": "shigotoba.etzhayyim.com",
+          "paths": [
+            "/",
+            "/api/mcp",
+            "/api/v1/jobs/search",
+            "/api/v1/jobs",
+            "/api/v1/companies",
+            "/api/v1/applications"
+          ]
+        }
+      ]
+    }
+  }
+}
