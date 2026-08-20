@@ -1,0 +1,80 @@
+;; Shigotoba public job-source citation catalog for axis-ingest.
+;;
+;; README / DATA_SOURCES.md claim Remotive, Arbeitnow, and RemoteOK as the
+;; live catalogue feed. This file pins those endpoints (and the schema /
+;; self-surface claims around them) behind a fetch gate.
+;;
+;; Gate: `nbb tools/verify_citations.cljs` must exit 0. Do not add a URL that
+;; does not return 2xx under that gate.
+
+{:catalog/id "shigotoba/public-job-sources/v1"
+ :catalog/about
+ "Public job-board APIs that shigotoba's in-memory catalogue is designed to
+  refresh from. Citations make the DATA_SOURCES.md claim falsifiable."
+
+ :catalog/entries
+ [{:cite/id :remotive/api-remote-jobs
+   :cite/url "https://remotive.com/api/remote-jobs"
+   :cite/kind :job-api
+   :cite/expect-substring "jobs"
+   :cite/note "Remotive remote-jobs JSON API (primary international remote feed)."}
+
+  {:cite/id :remotive/home
+   :cite/url "https://remotive.com/"
+   :cite/kind :publisher-home
+   :cite/expect-substring "Remotive"
+   :cite/note "Remotive publisher home."}
+
+  {:cite/id :arbeitnow/api-job-board
+   :cite/url "https://www.arbeitnow.com/api/job-board-api"
+   :cite/kind :job-api
+   :cite/expect-substring "data"
+   :cite/note "Arbeitnow job-board JSON API (EU-heavy feed)."}
+
+  {:cite/id :arbeitnow/home
+   :cite/url "https://www.arbeitnow.com/"
+   :cite/kind :publisher-home
+   :cite/expect-substring "Arbeitnow"
+   :cite/note "Arbeitnow publisher home."}
+
+  {:cite/id :remoteok/api
+   :cite/url "https://remoteok.com/api"
+   :cite/kind :job-api
+   :cite/expect-substring "legal"
+   :cite/note "RemoteOK public JSON API (global remote feed)."}
+
+  {:cite/id :remoteok/home
+   :cite/url "https://remoteok.com/"
+   :cite/kind :publisher-home
+   :cite/expect-substring "remote"
+   :cite/note "RemoteOK publisher home (body uses lowercase branding)."}
+
+  {:cite/id :schema/job-posting
+   :cite/url "https://schema.org/JobPosting"
+   :cite/kind :schema
+   :cite/expect-substring "JobPosting"
+   :cite/note "schema.org JobPosting — canonical job-posting vocabulary."}
+
+  {:cite/id :w3/json-ld11
+   :cite/url "https://www.w3.org/TR/json-ld11/"
+   :cite/kind :schema
+   :cite/expect-substring "JSON-LD"
+   :cite/note "JSON-LD 1.1 — PROJECT.jsonld / kotodama surface grammar."}
+
+  {:cite/id :self/readme-raw
+   :cite/url "https://raw.githubusercontent.com/cloud-itonami/shigotoba/695102511f08ca08f811e6e435b43bd2a8268bd6/README.md"
+   :cite/kind :self-surface
+   :cite/expect-substring "shigotoba"
+   :cite/note "Pinned README at pre-ingest tip (self-surface claim)."}
+
+  {:cite/id :self/commits-main
+   :cite/url "https://api.github.com/repos/cloud-itonami/shigotoba/commits/main"
+   :cite/kind :self-surface
+   :cite/expect-substring "sha"
+   :cite/note "GitHub commits API for this leaf."}
+
+  {:cite/id :self/data-sources-md
+   :cite/url "https://api.github.com/repos/cloud-itonami/shigotoba/contents/appview/shigotoba-jobs-component/DATA_SOURCES.md"
+   :cite/kind :self-surface
+   :cite/expect-substring "download_url"
+   :cite/note "GitHub contents API for the DATA_SOURCES design note."}]}
