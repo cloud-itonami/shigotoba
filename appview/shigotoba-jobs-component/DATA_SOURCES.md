@@ -62,3 +62,9 @@
 - 外部ソース依存のため、API 停止時は更新遅延が発生。
 - ソース間で給与・勤務地の粒度が異なるため、一部推定値を含む。
 - 現時点は in-memory cache のみ。永続化は次段階で `performer/rdbms` (cypher graph RDBMS) へ拡張予定。
+
+## Falsifiable pin
+
+The live URLs above are also listed in repo-root `facts/catalog.edn` and
+checked by `nbb tools/verify_citations.cljs`. Prefer editing the catalog when
+a source endpoint moves; keep this note and the catalog in sync.

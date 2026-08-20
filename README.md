@@ -51,3 +51,16 @@
 - `shigotoba.market_summary`
 - `shigotoba.data_sources`
 - `shigotoba.refresh_public_jobs`
+
+## Citation gate (axis-ingest)
+
+Public job sources claimed in `appview/shigotoba-jobs-component/DATA_SOURCES.md`
+are pinned in `facts/catalog.edn`. Verify they still answer:
+
+```bash
+nbb tools/verify_citations.cljs
+# broken URL must fail:
+# nbb tools/verify_citations.cljs  # after editing one :cite/url to https://example.invalid/nope
+```
+
+Exit 0 = every citation 2xx and floor met. Exit 1 = at least one drift. Exit 2 = could not answer.
