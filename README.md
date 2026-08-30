@@ -2,6 +2,11 @@
 
 `etzhayyim-project-shigotoba` は `shigotoba.etzhayyim.com` 向けのグローバル求人サイト設計・実装プロジェクトです。
 
+> **Status — 以下は設計記録であって、稼働中のサービスの説明ではない。**
+> `shigotoba.etzhayyim.com` は DNS レコードを持たず、`appview/` はビルド出力を持たない。
+> このリポジトリで実際に走るのは §Citation gate の 1 本だけ。何が動いて何が動かないか、
+> その測り方は [`docs/operator-quickstart.md`](docs/operator-quickstart.md)。
+
 ## Goal
 
 - Indeed 風に「検索速度」「網羅性」「応募導線」を重視した求人体験を提供
