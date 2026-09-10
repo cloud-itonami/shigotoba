@@ -66,5 +66,5 @@
 ## Falsifiable pin
 
 The live URLs above are also listed in repo-root `facts/catalog.edn` and
-checked by `nbb tools/verify_citations.cljs`. Prefer editing the catalog when
+checked by `nbb tools/verify_citations.kotoba`. Prefer editing the catalog when
 a source endpoint moves; keep this note and the catalog in sync.

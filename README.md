@@ -63,9 +63,9 @@ Public job sources claimed in `appview/shigotoba-jobs-component/DATA_SOURCES.md`
 are pinned in `facts/catalog.edn`. Verify they still answer:
 
 ```bash
-nbb tools/verify_citations.cljs
+nbb tools/verify_citations.kotoba
 # broken URL must fail:
-# nbb tools/verify_citations.cljs  # after editing one :cite/url to https://example.invalid/nope
+# nbb tools/verify_citations.kotoba  # after editing one :cite/url to https://example.invalid/nope
 ```
 
 Exit 0 = every citation 2xx and floor met. Exit 1 = at least one drift. Exit 2 = could not answer.
