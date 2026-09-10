@@ -4,7 +4,7 @@
 ;; live catalogue feed. This file pins those endpoints (and the schema /
 ;; self-surface claims around them) behind a fetch gate.
 ;;
-;; Gate: `nbb tools/verify_citations.cljs` must exit 0. Do not add a URL that
+;; Gate: `nbb tools/verify_citations.kotoba` must exit 0. Do not add a URL that
 ;; does not return 2xx under that gate.
 
 {:catalog/id "shigotoba/public-job-sources/v1"

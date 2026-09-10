@@ -16,7 +16,7 @@ What is actually here:
 
 | Path | State | Runs here? |
 |---|---|---|
-| `facts/catalog.edn` + `tools/verify_citations.cljs` | live, gated | **yes** — §1 |
+| `facts/catalog.edn` + `tools/verify_citations.kotoba` | live, gated | **yes** — §1 |
 | `kotoba/` (TypeScript registry + vitest suite) | source present | no — §2 |
 | `appview/` (SvelteKit component, `wrangler.jsonc`) | source present, unbuilt | no — §3 |
 
@@ -32,7 +32,7 @@ feed, plus the schema vocabularies and this repo's own GitHub surface. The gate
 fetches every one of them.
 
 ```bash
-nbb tools/verify_citations.cljs
+nbb tools/verify_citations.kotoba
 ```
 
 Measured at `ef46c11`: `CHECKED 11 OK 11 FAIL 0 MIN 8` → `PASS`, exit 0.
@@ -61,23 +61,23 @@ the id you touched, not merely be non-zero. All five were run at `ef46c11`:
 # (a) unreachable URL -> exit 1, DRIFT names that id
 sed 's|https://schema.org/JobPosting|https://example.invalid/nope|' \
   facts/catalog.edn > /tmp/broken-url.edn
-nbb tools/verify_citations.cljs /tmp/broken-url.edn --quiet
+nbb tools/verify_citations.kotoba /tmp/broken-url.edn --quiet
 #   DRIFT :schema/job-posting fetch-error getaddrinfo ENOTFOUND example.invalid   exit 1
 
 # (b) URL answers 2xx but no longer says what we claim -> exit 1
 sed 's|:cite/expect-substring "JobPosting"|:cite/expect-substring "NotOnThatPage"|' \
   facts/catalog.edn > /tmp/bad-substr.edn
-nbb tools/verify_citations.cljs /tmp/bad-substr.edn --quiet
+nbb tools/verify_citations.kotoba /tmp/bad-substr.edn --quiet
 #   DRIFT :schema/job-posting missing substring "NotOnThatPage"                   exit 1
 
 # (c) empty catalog -> exit 2, NOT 0
 printf '{:catalog/id "empty" :catalog/entries []}\n' > /tmp/empty.edn
-nbb tools/verify_citations.cljs /tmp/empty.edn --quiet
+nbb tools/verify_citations.kotoba /tmp/empty.edn --quiet
 #   EMPTY catalog entries                                                          exit 2
 
 # (d) unparseable catalog -> exit 2
 printf '{:catalog/entries [ unclosed\n' > /tmp/broken.edn
-nbb tools/verify_citations.cljs /tmp/broken.edn --quiet
+nbb tools/verify_citations.kotoba /tmp/broken.edn --quiet
 #   PARSE-FAIL Unexpected EOF while reading item 1 of vector.                      exit 2
 
 # (e) everything checked passed, but too few were checked -> exit 2, NOT 0
@@ -92,7 +92,7 @@ cat > /tmp/short.edn <<'EOF'
    :cite/url "https://www.w3.org/TR/json-ld11/"
    :cite/expect-substring "JSON-LD"}]}
 EOF
-nbb tools/verify_citations.cljs /tmp/short.edn
+nbb tools/verify_citations.kotoba /tmp/short.edn
 #   CHECKED 2 OK 2 FAIL 0 MIN 8 / FLOOR below --min 8 got 2                        exit 2
 ```
 
@@ -103,8 +103,8 @@ because eight was the amount of evidence the catalog promised.
 Capture the exit code from the gate itself, not from a pipeline:
 
 ```bash
-nbb tools/verify_citations.cljs > /tmp/gate.log 2>&1; echo "EXIT=$?"   # the gate's code
-nbb tools/verify_citations.cljs | tail -5; echo "EXIT=$?"             # tail's code — wrong
+nbb tools/verify_citations.kotoba > /tmp/gate.log 2>&1; echo "EXIT=$?"   # the gate's code
+nbb tools/verify_citations.kotoba | tail -5; echo "EXIT=$?"             # tail's code — wrong
 ```
 
 ### Editing the catalog
