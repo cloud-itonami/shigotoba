@@ -143,7 +143,7 @@ commands above after an npm upgrade; if the third one passes, `npm test` in
 unverified — not passing and not failing.**
 
 This is the same shape as the `npx --yes` breakage recorded in the workspace
-CLAUDE.md: red on this machine, fine elsewhere. Check a fleet node before
+AGENTS.md: red on this machine, fine elsewhere. Check a fleet node before
 concluding the repo is broken.
 
 ## 3. `appview/` — design record, not a deployment
